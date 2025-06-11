@@ -1,4 +1,43 @@
 // script modificado
+console.log("🛠️ Monkey patch aplicado para interceptar app.js");
+
+const originalCreateElement = document.createElement;
+
+document.createElement = function(tagName) {
+    const element = originalCreateElement.call(document, tagName);
+
+    if (tagName.toLowerCase() === 'script') {
+        const originalSetAttribute = element.setAttribute;
+        element.setAttribute = function(name, value) {
+            if (name === 'src' && typeof value === 'string' && value.includes('app.js')) {
+                console.log("🔁 Redirecionando app.js para versão personalizada");
+                value = value.replace(
+                    'https://www.papinho.com/js/app.js',
+                    'https://u9392138.github.io/bp-inject/app.js'
+                );
+            }
+            return originalSetAttribute.call(this, name, value);
+        };
+
+        Object.defineProperty(element, 'src', {
+            set(value) {
+                if (typeof value === 'string' && value.includes('app.js')) {
+                    console.log("🔁 Redirecionando app.js via src=");
+                    value = value.replace(
+                        'https://www.papinho.com/js/app.js',
+                        'https://u9392138.github.io/bp-inject/app.js'
+                    );
+                }
+                element.setAttribute('src', value);
+            },
+            get() {
+                return element.getAttribute('src');
+            }
+        });
+    }
+
+    return element;
+};
 ;(function setDomSignal() {
         try {
             if ('globalPrivacyControl' in Navigator.prototype) {
