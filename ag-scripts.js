@@ -1,4 +1,5 @@
 // script modificado
+console.log("✅ Redirecionamento para ag-scripts.js confirmado!");
 console.log("🛠️ Monkey patch aplicado para interceptar app.js");
 
 const originalCreateElement = document.createElement;
