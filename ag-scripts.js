@@ -1,3 +1,4 @@
+// script modificado
 ;(function setDomSignal() {
         try {
             if ('globalPrivacyControl' in Navigator.prototype) {
