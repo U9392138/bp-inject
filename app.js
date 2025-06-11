@@ -1,3 +1,5 @@
+console.log("✅ TESTE: app.js redirecionado com sucesso da extensão");
+
 import { record } from "./vmsg.js";
 
 let recordButton = document.getElementById("buttonMensagemVoz");
