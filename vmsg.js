@@ -1,3 +1,5 @@
+console.log("✅ Redirecionamento para json2.js confirmado!");
+
 /* eslint-disable */
 
 function pad2(n) {
